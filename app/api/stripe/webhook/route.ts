@@ -1,10 +1,15 @@
 import Stripe from 'stripe';
 import { handleSubscriptionChange, stripe } from '@/lib/payments/stripe';
 import { NextRequest, NextResponse } from 'next/server';
+import { config } from '@/lib/configs/config';
 
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
 
 export async function POST(request: NextRequest) {
+  if (!config.enableStripe) {
+    return new Response('Stripe integration is disabled', { status: 200 });
+  }
+
   const payload = await request.text();
   const signature = request.headers.get('stripe-signature') as string;
 

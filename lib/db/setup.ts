@@ -6,6 +6,8 @@ import crypto from 'node:crypto';
 import path from 'node:path';
 import os from 'node:os';
 
+import { config } from '@/lib/configs/config';
+
 const execAsync = promisify(exec);
 
 function question(query: string): Promise<string> {
@@ -194,11 +196,13 @@ async function writeEnvFile(envVars: Record<string, string>) {
 }
 
 async function main() {
-  await checkStripeCLI();
+  if (config.enableStripe) {
+    await checkStripeCLI();
+  }
 
   const POSTGRES_URL = await getPostgresURL();
-  const STRIPE_SECRET_KEY = await getStripeSecretKey();
-  const STRIPE_WEBHOOK_SECRET = await createStripeWebhook();
+  const STRIPE_SECRET_KEY = config.enableStripe ? await getStripeSecretKey() : '';
+  const STRIPE_WEBHOOK_SECRET = config.enableStripe ? await createStripeWebhook() : '';
   const BASE_URL = 'http://localhost:3000';
   const AUTH_SECRET = generateAuthSecret();
 

@@ -2,11 +2,23 @@ import { checkoutAction } from '@/lib/payments/actions';
 import { Check } from 'lucide-react';
 import { getStripePrices, getStripeProducts } from '@/lib/payments/stripe';
 import { SubmitButton } from './submit-button';
+import { config } from '@/lib/configs/config';
 
 // Prices are fresh for one hour max
 export const revalidate = 3600;
 
 export default async function PricingPage() {
+  if (!config.enableStripe) {
+    return (
+      <div className="container py-10 text-center">
+        <h1 className="text-3xl font-bold">Pricing</h1>
+        <p className="mt-4 text-muted-foreground">
+          Subscriptions are currently disabled. Contact us for access.
+        </p>
+      </div>
+    );
+  }
+
   const [prices, products] = await Promise.all([
     getStripePrices(),
     getStripeProducts(),
