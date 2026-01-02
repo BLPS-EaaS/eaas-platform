@@ -1,0 +1,190 @@
+{
+  "EvaluationForm": {
+    "title": "New Optimization Request",
+    "submit": "Submit Request",
+    "submitting": "Submitting...",
+    "validation": {
+      "required": "Please upload a CSV or HTML file.",
+      "success": "Optimization request submitted successfully!",
+      "error": "Failed to submit optimization request."
+    },
+    "sections": {
+      "company": {
+        "title": "Company Information",
+        "description": "Enter the company details for this optimization.",
+        "name": "Company Name",
+        "name_placeholder": "Acme Corp",
+        "address": "Address",
+        "address_placeholder": "123 Energy Way"
+      },
+      "upload": {
+        "title": "Data Upload",
+        "description": "Upload the AMI data (CSV) or Daily Pattern (HTML).",
+        "label": "Upload File (CSV or HTML)"
+      },
+      "cabinets": {
+        "title": "Cabinet Configuration"
+      },
+      "battery": {
+        "title": "Battery Configuration",
+        "unit": {
+            "title": "Unit Settings",
+            "energy_capacity": "Energy Capacity (kWh)",
+            "capacity_usable_fraction": "Usable Capacity Fraction",
+            "power_rating": "Power Rating (kW)",
+            "rating_usable_fraction": "Usable Rating Fraction",
+            "efficiency_store": "Charging Efficiency",
+            "efficiency_dispatch": "Discharging Efficiency",
+            "decay_rate": "Decay Rate",
+            "c_rate": "C-Rate",
+            "initial_soc": "Initial SoC"
+        },
+        "costs": {
+            "title": "Cost Settings",
+            "salvage_fraction": "Salvage Fraction"
+        }
+      },
+      "power_factor_tariff": {
+        "title": "Power Factor Tariff",
+        "description": "Configuration for power factor penalties and credits.",
+        "base_threshold": "Base Threshold",
+        "credit_cap": "Credit Cap",
+        "adjustment_rate": "Adjustment Rate"
+      },
+
+      "base_case": {
+        "title": "Base Case",
+        "advanced_settings": "Advanced Base Case Settings",
+        "description": "Current energy configuration.",
+        "tariff_type": "Tariff Type",
+        "tariff_placeholder": "Select tariff type",
+        "reg_cap": "Regular Capacity (kW)",
+        "half_peak_cap": "Half Peak Capacity (kW)",
+        "sat_half_peak_cap": "Sat. Half Peak Capacity (kW)",
+        "off_cap": "Off Peak Capacity (kW)",
+        "power_factor": "Power Factor",
+        "allow_excess": "Allow Excess Contract Capacity"
+      },
+      "project_case": {
+        "title": "Project Case",
+        "description": "Proposed optimization settings.",
+        "n_cabinets": "N Cabinets",
+        "start_n_cabinets": "Start N Cabinets",
+        "reg_cap": "Regular Capacity (kW)",
+        "half_peak_cap": "Half Peak Capacity (kW)",
+        "sat_half_peak_cap": "Sat. Half Peak Capacity (kW)",
+        "off_cap": "Off Peak Capacity (kW)"
+      },
+      "toggle": {
+        "show": "Show Advanced Options",
+        "hide": "Hide Advanced Options"
+      },
+      "financial": {
+        "title": "Financial Parameters",
+        "discount_rate": "Discount Rate",
+        "lifetime": "Lifetime (Years)",
+        "spv_interest_rate": "SPV Interest Rate",
+        "system_cost": {
+            "title": "System Cost Breakdown",
+            "exchange_rate": "Exchange Rate",
+            "usd_per_kwh": "USD/kWh",
+            "cabinet_kwh_capacity": "Cabinet Capacity (kWh)",
+            "cost_cabinet_shipping": "Shipping Cost",
+            "cost_low_voltage_unit": "Low Voltage Unit Cost",
+            "cost_ems_unit": "EMS Unit Cost",
+            "cost_transformer_unit": "Transformer Unit Cost",
+            "cost_vcb_unit": "VCB Unit Cost",
+            "insurance_rate": "Insurance Rate",
+            "tax_rate": "Tax Rate",
+            "om_percent": "O&M Percentage",
+             "eng_tiers": {
+                "title": "Engineering Costs (Tiers)",
+                "tier_1_6": "Tier 1-6",
+                "tier_7_10": "Tier 7-10",
+                "tier_11_20": "Tier 11-20",
+                "tier_21_40": "Tier 21-40",
+                "tier_41_60": "Tier 41-60",
+                "tier_61_80": "Tier 61-80",
+                "tier_81_100": "Tier 81-100"
+            }
+        },
+        "esco": {
+            "title": "ESCO Settings",
+            "spv": "SPV",
+            "factory": "Factory",
+            "operation": "Operation",
+            "service": "Service"
+        }
+      },
+      "adr": {
+        "title": "Automated Demand Response (ADR)",
+        "activate_all": "Activate All ADR Programs",
+        "schedule_dr": {
+            "title": "Schedule DR",
+            "monthly_select_8_day": {
+                "title": "Monthly Select 8 Day",
+                "pledge_kw_ratio": "Pledge kW Ratio"
+            },
+            "daily_select_time_block": {
+                "title": "Daily Select Time Block",
+                "pledge_kw_ratio": "Pledge kW Ratio",
+                "options": {
+                    "2h": "2 Hours",
+                    "4h": "4 Hours",
+                    "6h": "6 Hours"
+                }
+            }
+        },
+        "real_time_dr": {
+            "title": "Real Time DR",
+            "guaranteed_response_type": {
+                "title": "Guaranteed Response",
+                "pledge_kw_ratio": "Pledge kW Ratio",
+                "event_daily_probability": "Daily Probability",
+                "event_duration_hours": "Duration (Hours)",
+                "peak_month_multiplier": "Peak Month Multiplier",
+                "notification_time": "Notification Time"
+            },
+            "flexible_response_type": {
+                "title": "Flexible Response",
+                "pledge_kw_ratio": "Pledge kW Ratio",
+                "event_daily_probability": "Daily Probability",
+                "event_duration_hours": "Duration (Hours)",
+                "peak_month_multiplier": "Peak Month Multiplier"
+            }
+        },
+        "demand_bidding": {
+            "title": "Demand Bidding",
+            "economic_type": {
+                "title": "Economic Type",
+                 "pledge_kw_ratio": "Pledge kW Ratio",
+                "bid_probability": "Bid Probability",
+                "event_duration_hours": "Duration (Hours)",
+                "bid_price": "Bid Price",
+                "notification_type": "Notification Type"
+            },
+            "reliable_type": {
+                "title": "Reliable Type",
+                "pledge_kw_ratio": "Pledge kW Ratio",
+                "bid_probability": "Bid Probability",
+                "event_duration_hours": "Duration (Hours)",
+                "bid_price": "Bid Price"
+            },
+            "combined_type": {
+                "title": "Combined Type"
+            }
+        },
+        "renewable_energy_obligations_type": {
+            "title": "Renewable Energy Obligations",
+            "obligated_hours_type": "Obligated Hours Type",
+            "progressive_incentive_type": "Progressive Incentive Type"
+        }
+      }
+    },
+    "options": {
+      "two_tier": "Two Tier",
+      "three_tier": "Three Tier",
+      "batch": "Batch"
+    }
+  }
+}

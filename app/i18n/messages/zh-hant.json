@@ -1,0 +1,190 @@
+{
+  "EvaluationForm": {
+    "title": "新增試算申請",
+    "submit": "提交申請",
+    "submitting": "提交中...",
+    "validation": {
+      "required": "請上傳 CSV 或 HTML 檔案。",
+      "success": "優化申請已成功提交！",
+      "error": "優化申請提交失敗。"
+    },
+    "sections": {
+      "company": {
+        "title": "公司資訊",
+        "description": "請輸入此優化案的公司詳細資料。",
+        "name": "公司名稱",
+        "name_placeholder": "範例企業",
+        "address": "地址",
+        "address_placeholder": "xx市xx路123號"
+      },
+      "upload": {
+        "title": "資料上傳",
+        "description": "上傳 AMI 數據 (CSV) 或日負載型態 (HTML)。",
+        "label": "上傳檔案 (CSV 或 HTML)"
+      },
+      "cabinets": {
+        "title": "機櫃配置"
+      },
+      "battery": {
+        "title": "電池配置",
+        "unit": {
+            "title": "單元設定",
+            "energy_capacity": "能量容量 (kWh)",
+            "capacity_usable_fraction": "可用容量比例",
+            "power_rating": "額定功率 (kW)",
+            "rating_usable_fraction": "可用功率比例",
+            "efficiency_store": "充電效率",
+            "efficiency_dispatch": "放電效率",
+            "decay_rate": "衰退率",
+            "c_rate": "C-Rate (倍率)",
+            "initial_soc": "初始電量 (SoC)"
+        },
+        "costs": {
+            "title": "成本設定",
+            "salvage_fraction": "殘值比例"
+        }
+      },
+      "power_factor_tariff": {
+        "title": "功率因數費率",
+        "description": "功率因數罰款與優惠設定。",
+        "base_threshold": "基礎門檻",
+        "credit_cap": "優惠上限",
+        "adjustment_rate": "調整費率"
+      },
+
+      "base_case": {
+        "title": "基礎案例",
+        "advanced_settings": "進階基礎案例設定",
+        "description": "目前的能源配置。",
+        "tariff_type": "電價方案",
+        "tariff_placeholder": "選擇電價方案",
+        "reg_cap": "經常契約容量 (kW)",
+        "half_peak_cap": "半尖峰契約容量 (kW)",
+        "sat_half_peak_cap": "週六半尖峰契約容量 (kW)",
+        "off_cap": "離峰契約容量 (kW)",
+        "power_factor": "功率因數",
+        "allow_excess": "允許超約"
+      },
+      "project_case": {
+        "title": "規劃案例",
+        "description": "建議的優化設定。",
+        "n_cabinets": "結束機櫃數量",
+        "start_n_cabinets": "起始機櫃數量",
+        "reg_cap": "經常契約容量 (kW)",
+        "half_peak_cap": "半尖峰契約容量 (kW)",
+        "sat_half_peak_cap": "週六半尖峰契約容量 (kW)",
+        "off_cap": "離峰契約容量 (kW)"
+      },
+      "toggle": {
+        "show": "顯示進階選項",
+        "hide": "隱藏進階選項"
+      },
+      "financial": {
+        "title": "財務參數",
+        "discount_rate": "折現率",
+        "lifetime": "使用年限 (年)",
+        "spv_interest_rate": "SPV 利率",
+        "system_cost": {
+            "title": "系統成本細項",
+            "exchange_rate": "匯率",
+            "usd_per_kwh": "USD/kWh",
+            "cabinet_kwh_capacity": "機櫃容量 (kWh)",
+            "cost_cabinet_shipping": "運費成本",
+            "cost_low_voltage_unit": "低壓單元成本",
+            "cost_ems_unit": "EMS 單元成本",
+            "cost_transformer_unit": "變壓器單元成本",
+            "cost_vcb_unit": "VCB 單元成本",
+            "insurance_rate": "保險費率",
+            "tax_rate": "稅率",
+             "om_percent": "維運費率 (O&M)",
+             "eng_tiers": {
+                "title": "工程費用 (級距)",
+                "tier_1_6": "級距 1-6",
+                "tier_7_10": "級距 7-10",
+                "tier_11_20": "級距 11-20",
+                "tier_21_40": "級距 21-40",
+                "tier_41_60": "級距 41-60",
+                "tier_61_80": "級距 61-80",
+                "tier_81_100": "級距 81-100"
+            }
+        },
+        "esco": {
+            "title": "ESCO 設定",
+            "spv": "SPV",
+            "factory": "工廠",
+            "operation": "營運商",
+            "service": "服務商"
+        }
+      },
+      "adr": {
+        "title": "需量反應 (ADR)",
+        "activate_all": "啟用所有 ADR 方案",
+        "schedule_dr": {
+            "title": "計畫性",
+            "monthly_select_8_day": {
+                "title": "月選8日型",
+                "pledge_kw_ratio": "抑低契約比例"
+            },
+            "daily_select_time_block": {
+                "title": "日選時段型",
+                "pledge_kw_ratio": "抑低契約比例",
+                "options": {
+                    "2h": "2 小時",
+                    "4h": "4 小時",
+                    "6h": "6 小時"
+                }
+            }
+        },
+        "real_time_dr": {
+            "title": "即時型",
+            "guaranteed_response_type": {
+                "title": "保證反應型",
+                "pledge_kw_ratio": "抑低契約比例",
+                "event_daily_probability": "每日發生機率",
+                "event_duration_hours": "持續時間 (小時)",
+                "peak_month_multiplier": "尖峰月份加成",
+                "notification_time": "通知時間"
+            },
+            "flexible_response_type": {
+                "title": "彈性反應型",
+                "pledge_kw_ratio": "抑低契約比例",
+                "event_daily_probability": "每日發生機率",
+                "event_duration_hours": "持續時間 (小時)",
+                "peak_month_multiplier": "尖峰月份加成"
+            }
+        },
+        "demand_bidding": {
+            "title": "需量競價",
+            "economic_type": {
+                "title": "經濟型",
+                 "pledge_kw_ratio": "抑低契約比例",
+                "bid_probability": "得標機率",
+                "event_duration_hours": "持續時間 (小時)",
+                "bid_price": "報價金額",
+                "notification_type": "通知類型"
+            },
+            "reliable_type": {
+                "title": "可靠型",
+                "pledge_kw_ratio": "抑低契約比例",
+                "bid_probability": "得標機率",
+                "event_duration_hours": "持續時間 (小時)",
+                "bid_price": "報價金額"
+            },
+            "combined_type": {
+                "title": "聯合型"
+            }
+        },
+        "renewable_energy_obligations_type": {
+            "title": "再生能源義務",
+            "obligated_hours_type": "義務時數型",
+            "progressive_incentive_type": "累進回饋型"
+        }
+      }
+    },
+    "options": {
+      "two_tier": "二段式",
+      "three_tier": "三段式",
+      "batch": "批次"
+    }
+  }
+}

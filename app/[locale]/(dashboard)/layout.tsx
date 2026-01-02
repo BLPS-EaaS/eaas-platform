@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { use, useState, Suspense } from 'react';
 import { Button } from '@/components/ui/button';
-import { CircleIcon, Home, LogOut } from 'lucide-react';
+import { CircleIcon, Home, LogOut, Globe } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,12 +11,51 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { signOut } from '@/app/(login)/actions';
-import { useRouter } from 'next/navigation';
+import { signOut } from '@/app/[locale]/(login)/actions';
+import { useRouter, usePathname } from 'next/navigation';
 import { User } from '@/lib/db/schema';
 import useSWR, { mutate } from 'swr';
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
+function LanguageSwitch() {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const switchLanguage = (locale: string) => {
+    // Basic locale replacement. Assumes path starts with /locale/ or locale is missing
+    const segments = pathname.split('/');
+    if (segments.length > 1 && (segments[1] === 'en' || segments[1] === 'zh-hant')) {
+        segments[1] = locale;
+    } else {
+        // If locale not in path (e.g. root), this might be tricky without next-intl's middlewares usually handling it. 
+        // But for this project structure /en/... or /zh-hant/... is expected.
+        // Fallback or just splice it in if missing? next-intl middleware usually redirects to default locale.
+        // If we are on a page, we likely have the locale in path.
+        segments.splice(1, 0, locale);
+    }
+    const newPath = segments.join('/');
+    router.push(newPath);
+  };
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" size="icon" className="rounded-full">
+          <Globe className="h-5 w-5 text-gray-500" />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem onClick={() => switchLanguage('en')}>
+          English
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => switchLanguage('zh-hant')}>
+          繁體中文
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
 
 function UserMenu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -83,10 +122,11 @@ function Header() {
     <header className="border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
         <Link href="/" className="flex items-center">
-          <CircleIcon className="h-6 w-6 text-orange-500" />
-          <span className="ml-2 text-xl font-semibold text-gray-900">ACME</span>
+          <CircleIcon className="h-6 w-6 text-blue-500" />
+          <span className="ml-2 text-xl font-semibold text-gray-900">BLPS</span>
         </Link>
         <div className="flex items-center space-x-4">
+          <LanguageSwitch />
           <Suspense fallback={<div className="h-9" />}>
             <UserMenu />
           </Suspense>

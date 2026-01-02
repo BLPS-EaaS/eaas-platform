@@ -8,7 +8,7 @@ export const optimizationSchema = z.object({
 //   time_steps_per_hour: z.number().int().min(1).max(60).default(4),
 //   start_date: z.string().date(), // YYYY-MM-DD
 //   end_date: z.string().date(),
-  start_n_cabinets: z.number().int().min(1),
+  start_n_cabinets: z.number().int().min(1).default(1),
   n_cabinets: z.number().int().min(1),
   base_case: z.object({
     tariff_type: z.enum(["two_tier", "three_tier", "batch"]), // Add more if needed
