@@ -26,7 +26,7 @@ export default function HomePage() {
           </div>
           <div className="mt-12 grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md">
-              <div className="p-3 rounded-full bg-orange-100 text-orange-600">
+              <div className="p-3 rounded-full bg-blue-100 text-blue-600">
                 <Activity className="h-8 w-8" />
               </div>
               <h3 className="mt-4 text-lg font-medium text-gray-900 text-center">
@@ -35,7 +35,7 @@ export default function HomePage() {
             </div>
 
             <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md">
-              <div className="p-3 rounded-full bg-orange-100 text-orange-600">
+              <div className="p-3 rounded-full bg-blue-100 text-blue-600">
                 <Zap className="h-8 w-8" />
               </div>
               <h3 className="mt-4 text-lg font-medium text-gray-900 text-center">
@@ -44,7 +44,7 @@ export default function HomePage() {
             </div>
 
             <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md">
-              <div className="p-3 rounded-full bg-orange-100 text-orange-600">
+              <div className="p-3 rounded-full bg-blue-100 text-blue-600">
                 <Sun className="h-8 w-8" />
               </div>
               <h3 className="mt-4 text-lg font-medium text-gray-900 text-center">
@@ -53,7 +53,7 @@ export default function HomePage() {
             </div>
 
             <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md">
-              <div className="p-3 rounded-full bg-orange-100 text-orange-600">
+              <div className="p-3 rounded-full bg-blue-100 text-blue-600">
                 <Battery className="h-8 w-8" />
               </div>
               <h3 className="mt-4 text-lg font-medium text-gray-900 text-center">
@@ -73,17 +73,17 @@ export default function HomePage() {
           </div>
           <div className="mt-12 flex flex-col items-center space-y-6">
             <div className="flex items-center space-x-3 text-gray-600">
-              <Phone className="h-6 w-6 text-orange-500" />
+              <Phone className="h-6 w-6 text-blue-500" />
               <span>{t('contact.phone')}</span>
             </div>
             <div className="flex items-center space-x-3 text-gray-600">
-              <Mail className="h-6 w-6 text-orange-500" />
-              <a href={`mailto:${t('contact.email')}`} className="hover:text-orange-600">
+              <Mail className="h-6 w-6 text-blue-500" />
+              <a href={`mailto:${t('contact.email')}`} className="hover:text-blue-600">
                 {t('contact.email')}
               </a>
             </div>
             <div className="flex items-center space-x-3 text-gray-600 text-center max-w-lg">
-              <MapPin className="h-6 w-6 text-orange-500 flex-shrink-0" />
+              <MapPin className="h-6 w-6 text-blue-500 flex-shrink-0" />
               <span>{t('contact.address')}</span>
             </div>
           </div>
