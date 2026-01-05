@@ -3,17 +3,20 @@ import { Check } from 'lucide-react';
 import { getStripePrices, getStripeProducts } from '@/lib/payments/stripe';
 import { SubmitButton } from './submit-button';
 import { config } from '@/lib/configs/config';
+import { getTranslations } from 'next-intl/server';
 
 // Prices are fresh for one hour max
 export const revalidate = 3600;
 
 export default async function PricingPage() {
+  const t = await getTranslations('Pricing');
+
   if (!config.enableStripe) {
     return (
       <div className="container py-10 text-center">
-        <h1 className="text-3xl font-bold">Pricing</h1>
+        <h1 className="text-3xl font-bold">{t('title')}</h1>
         <p className="mt-4 text-muted-foreground">
-          Subscriptions are currently disabled. Contact us for access.
+          {t('disabled_message')}
         </p>
       </div>
     );
@@ -39,11 +42,12 @@ export default async function PricingPage() {
           interval={basePrice?.interval || 'month'}
           trialDays={basePrice?.trialPeriodDays || 7}
           features={[
-            'Unlimited Usage',
-            'Unlimited Workspace Members',
-            'Email Support',
+            t('features.unlimited_usage'),
+            t('features.unlimited_members'),
+            t('features.email_support'),
           ]}
           priceId={basePrice?.id}
+          t={t}
         />
         <PricingCard
           name={plusPlan?.name || 'Plus'}
@@ -51,11 +55,12 @@ export default async function PricingPage() {
           interval={plusPrice?.interval || 'month'}
           trialDays={plusPrice?.trialPeriodDays || 7}
           features={[
-            'Everything in Base, and:',
-            'Early Access to New Features',
-            '24/7 Support + Slack Access',
+            t('features.everything_base'),
+            t('features.early_access'),
+            t('features.support_slack'),
           ]}
           priceId={plusPrice?.id}
+          t={t}
         />
       </div>
     </main>
@@ -69,6 +74,7 @@ function PricingCard({
   trialDays,
   features,
   priceId,
+  t
 }: {
   name: string;
   price: number;
@@ -76,17 +82,18 @@ function PricingCard({
   trialDays: number;
   features: string[];
   priceId?: string;
+  t: any;
 }) {
   return (
     <div className="pt-6">
       <h2 className="text-2xl font-medium text-gray-900 mb-2">{name}</h2>
       <p className="text-sm text-gray-600 mb-4">
-        with {trialDays} day free trial
+        {t('trial_days', { trialDays })}
       </p>
       <p className="text-4xl font-medium text-gray-900 mb-6">
         ${price / 100}{' '}
         <span className="text-xl font-normal text-gray-600">
-          per user / {interval}
+          {t('per_user')} / {interval === 'month' ? t('interval_month') : interval}
         </span>
       </p>
       <ul className="space-y-4 mb-8">

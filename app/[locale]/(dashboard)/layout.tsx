@@ -15,6 +15,7 @@ import { signOut } from '@/app/[locale]/(login)/actions';
 import { useRouter, usePathname } from 'next/navigation';
 import { User } from '@/lib/db/schema';
 import useSWR, { mutate } from 'swr';
+import { useTranslations } from 'next-intl';
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -61,6 +62,7 @@ function UserMenu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { data: user } = useSWR<User>('/api/user', fetcher);
   const router = useRouter();
+  const t = useTranslations('Navigation');
 
   async function handleSignOut() {
     await signOut();
@@ -75,10 +77,10 @@ function UserMenu() {
           href="/pricing"
           className="text-sm font-medium text-gray-700 hover:text-gray-900"
         >
-          Pricing
+          {t('pricing')}
         </Link>
         <Button asChild className="rounded-full">
-          <Link href="/sign-up">Sign Up</Link>
+          <Link href="/sign-up">{t('sign_up')}</Link>
         </Button>
       </>
     );
@@ -101,20 +103,20 @@ function UserMenu() {
         <DropdownMenuItem className="cursor-pointer">
           <Link href="/dashboard" className="flex w-full items-center">
             <Home className="mr-2 h-4 w-4" />
-            <span>Dashboard</span>
+            <span>{t('dashboard')}</span>
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem className="cursor-pointer">
           <Link href="/evaluation" className="flex w-full items-center">
             <LandPlot className="mr-2 h-4 w-4" />
-            <span>Evaluation</span>
+            <span>{t('evaluation')}</span>
           </Link>
         </DropdownMenuItem>
         <form action={handleSignOut} className="w-full">
           <button type="submit" className="flex w-full">
             <DropdownMenuItem className="w-full flex-1 cursor-pointer">
               <LogOut className="mr-2 h-4 w-4" />
-              <span>Sign out</span>
+              <span>{t('sign_out')}</span>
             </DropdownMenuItem>
           </button>
         </form>

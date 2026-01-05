@@ -240,5 +240,139 @@
         "battery_soc": "Battery State of Charge",
         "operating_cost": "Operating Cost"
     }
+  },
+  "Login": {
+    "title_signin": "Sign in to your account",
+    "title_signup": "Create your account",
+    "email_label": "Email",
+    "password_label": "Password",
+    "email_placeholder": "Enter your email",
+    "password_placeholder_signin": "Enter your password",
+    "password_placeholder_signup": "Enter your password",
+    "signin_button": "Sign in",
+    "signup_button": "Sign up",
+    "loading": "Loading...",
+    "new_to_platform": "New to our platform?",
+    "already_have_account": "Already have an account?",
+    "create_account_link": "Create an account",
+    "signin_link": "Sign in to existing account"
+  },
+  "Navigation": {
+    "dashboard": "Dashboard",
+    "evaluation": "Evaluation",
+    "sign_out": "Sign out",
+    "pricing": "Pricing",
+    "sign_up": "Sign Up",
+    "settings": "Settings"
+  },
+  "TeamSettings": {
+    "title": "Team Settings",
+    "subscription_title": "Team Subscription",
+    "current_plan": "Current Plan",
+    "free_plan": "Free",
+    "billed_monthly": "Billed monthly",
+    "trial_period": "Trial period",
+    "no_active_subscription": "No active subscription",
+    "manage_subscription": "Manage Subscription",
+    "members_title": "Team Members",
+    "no_members": "No team members yet.",
+    "remove": "Remove",
+    "removing": "Removing...",
+    "invite_title": "Invite Team Member",
+    "email_label": "Email",
+    "email_placeholder": "Enter email",
+    "role_label": "Role",
+    "member": "Member",
+    "owner": "Owner",
+    "invite_button": "Invite Member",
+    "inviting": "Inviting...",
+    "owner_only": "You must be a team owner to invite new members."
+  },
+  "GeneralSettings": {
+    "title": "General Settings",
+    "account_info": "Account Information",
+    "name_label": "Name",
+    "name_placeholder": "Enter your name",
+    "email_label": "Email",
+    "email_placeholder": "Enter your email",
+    "save": "Save Changes",
+    "saving": "Saving..."
+  },
+  "ActivityLog": {
+    "title": "Activity Log",
+    "recent": "Recent Activity",
+    "no_activity": "No activity yet",
+    "no_activity_desc": "When you perform actions like signing in or updating your account, they'll appear here.",
+    "from_ip": "from IP",
+    "actions": {
+        "SIGN_UP": "You signed up",
+        "SIGN_IN": "You signed in",
+        "SIGN_OUT": "You signed out",
+        "UPDATE_PASSWORD": "You changed your password",
+        "DELETE_ACCOUNT": "You deleted your account",
+        "UPDATE_ACCOUNT": "You updated your account",
+        "CREATE_TEAM": "You created a new team",
+        "REMOVE_TEAM_MEMBER": "You removed a team member",
+        "INVITE_TEAM_MEMBER": "You invited a team member",
+        "ACCEPT_INVITATION": "You accepted an invitation",
+        "UNKNOWN": "Unknown action occurred"
+    },
+    "time": {
+        "just_now": "just now",
+        "minutes_ago": "{count} minutes ago",
+        "hours_ago": "{count} hours ago",
+        "days_ago": "{count} days ago"
+    }
+  },
+  "SecuritySettings": {
+    "title": "Security Settings",
+    "password_title": "Password",
+    "current_password": "Current Password",
+    "new_password": "New Password",
+    "confirm_new_password": "Confirm New Password",
+    "update_password": "Update Password",
+    "updating": "Updating...",
+    "delete_account_title": "Delete Account",
+    "delete_account_desc": "Account deletion is non-reversable. Please proceed with caution.",
+    "confirm_password": "Confirm Password",
+    "delete_account": "Delete Account",
+    "deleting": "Deleting..."
+  },
+  "EvaluationList": {
+    "title": "Evaluations",
+    "subtitle": "View and manage your historical optimization jobs.",
+    "new_evaluation": "New Evaluation",
+    "no_evaluations": "No evaluations yet",
+    "start_first_optimization": "Start your first optimization to see results here.",
+    "create_evaluation": "Create Evaluation",
+    "table": {
+        "job_id": "Job ID",
+        "company": "Company",
+        "status": "Status",
+        "progress": "Progress",
+        "created_at": "Created At"
+    },
+    "status_types": {
+        "completed": "Completed",
+        "failed": "Failed",
+        "processing": "Processing"
+    }
+  },
+  "Pricing": {
+    "title": "Pricing",
+    "disabled_message": "Subscriptions are currently disabled. Contact us for access.",
+    "per_user": "per user",
+    "interval_month": "month",
+    "trial_days": "with {trialDays} day free trial",
+    "get_started": "Get Started",
+    "loading": "Loading...",
+    "features": {
+        "unlimited_usage": "Unlimited Usage",
+        "unlimited_members": "Unlimited Workspace Members",
+        "email_support": "Email Support",
+        "everything_base": "Everything in Base, and:",
+        "early_access": "Early Access to New Features",
+        "support_slack": "24/7 Support + Slack Access"
+    }
   }
 }

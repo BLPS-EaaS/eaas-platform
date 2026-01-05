@@ -19,6 +19,7 @@ import { Input } from '@/components/ui/input';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { Loader2, PlusCircle } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 type ActionState = {
   error?: string;
@@ -39,30 +40,31 @@ function SubscriptionSkeleton() {
 
 function ManageSubscription() {
   const { data: teamData } = useSWR<TeamDataWithMembers>('/api/team', fetcher);
+  const t = useTranslations('TeamSettings');
 
   return (
     <Card className="mb-8">
       <CardHeader>
-        <CardTitle>Team Subscription</CardTitle>
+        <CardTitle>{t('subscription_title')}</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
             <div className="mb-4 sm:mb-0">
               <p className="font-medium">
-                Current Plan: {teamData?.planName || 'Free'}
+                {t('current_plan')}: {teamData?.planName || t('free_plan')}
               </p>
               <p className="text-sm text-muted-foreground">
                 {teamData?.subscriptionStatus === 'active'
-                  ? 'Billed monthly'
+                  ? t('billed_monthly')
                   : teamData?.subscriptionStatus === 'trialing'
-                  ? 'Trial period'
-                  : 'No active subscription'}
+                  ? t('trial_period')
+                  : t('no_active_subscription')}
               </p>
             </div>
             <form action={customerPortalAction}>
               <Button type="submit" variant="outline">
-                Manage Subscription
+                {t('manage_subscription')}
               </Button>
             </form>
           </div>
@@ -99,6 +101,7 @@ function TeamMembers() {
     ActionState,
     FormData
   >(removeTeamMember, {});
+  const t = useTranslations('TeamSettings');
 
   const getUserDisplayName = (user: Pick<User, 'id' | 'name' | 'email'>) => {
     return user.name || user.email || 'Unknown User';
@@ -108,10 +111,10 @@ function TeamMembers() {
     return (
       <Card className="mb-8">
         <CardHeader>
-          <CardTitle>Team Members</CardTitle>
+          <CardTitle>{t('members_title')}</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-muted-foreground">No team members yet.</p>
+          <p className="text-muted-foreground">{t('no_members')}</p>
         </CardContent>
       </Card>
     );
@@ -120,7 +123,7 @@ function TeamMembers() {
   return (
     <Card className="mb-8">
       <CardHeader>
-        <CardTitle>Team Members</CardTitle>
+        <CardTitle>{t('members_title')}</CardTitle>
       </CardHeader>
       <CardContent>
         <ul className="space-y-4">
@@ -149,7 +152,7 @@ function TeamMembers() {
                     {getUserDisplayName(member.user)}
                   </p>
                   <p className="text-sm text-muted-foreground capitalize">
-                    {member.role}
+                    {member.role === 'owner' ? t('owner') : t('member')}
                   </p>
                 </div>
               </div>
@@ -162,7 +165,7 @@ function TeamMembers() {
                     size="sm"
                     disabled={isRemovePending}
                   >
-                    {isRemovePending ? 'Removing...' : 'Remove'}
+                    {isRemovePending ? t('removing') : t('remove')}
                   </Button>
                 </form>
               ) : null}
@@ -194,29 +197,30 @@ function InviteTeamMember() {
     ActionState,
     FormData
   >(inviteTeamMember, {});
+  const t = useTranslations('TeamSettings');
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Invite Team Member</CardTitle>
+        <CardTitle>{t('invite_title')}</CardTitle>
       </CardHeader>
       <CardContent>
         <form action={inviteAction} className="space-y-4">
           <div>
             <Label htmlFor="email" className="mb-2">
-              Email
+              {t('email_label')}
             </Label>
             <Input
               id="email"
               name="email"
               type="email"
-              placeholder="Enter email"
+              placeholder={t('email_placeholder')}
               required
               disabled={!isOwner}
             />
           </div>
           <div>
-            <Label>Role</Label>
+            <Label>{t('role_label')}</Label>
             <RadioGroup
               defaultValue="member"
               name="role"
@@ -225,11 +229,11 @@ function InviteTeamMember() {
             >
               <div className="flex items-center space-x-2 mt-2">
                 <RadioGroupItem value="member" id="member" />
-                <Label htmlFor="member">Member</Label>
+                <Label htmlFor="member">{t('member')}</Label>
               </div>
               <div className="flex items-center space-x-2 mt-2">
                 <RadioGroupItem value="owner" id="owner" />
-                <Label htmlFor="owner">Owner</Label>
+                <Label htmlFor="owner">{t('owner')}</Label>
               </div>
             </RadioGroup>
           </div>
@@ -247,12 +251,12 @@ function InviteTeamMember() {
             {isInvitePending ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Inviting...
+                {t('inviting')}
               </>
             ) : (
               <>
                 <PlusCircle className="mr-2 h-4 w-4" />
-                Invite Member
+                {t('invite_button')}
               </>
             )}
           </Button>
@@ -261,7 +265,7 @@ function InviteTeamMember() {
       {!isOwner && (
         <CardFooter>
           <p className="text-sm text-muted-foreground">
-            You must be a team owner to invite new members.
+            {t('owner_only')}
           </p>
         </CardFooter>
       )}
@@ -270,9 +274,10 @@ function InviteTeamMember() {
 }
 
 export default function SettingsPage() {
+  const t = useTranslations('TeamSettings');
   return (
     <section className="flex-1 p-4 lg:p-8">
-      <h1 className="text-lg lg:text-2xl font-medium mb-6">Team Settings</h1>
+      <h1 className="text-lg lg:text-2xl font-medium mb-6">{t('title')}</h1>
       <Suspense fallback={<SubscriptionSkeleton />}>
         <ManageSubscription />
       </Suspense>

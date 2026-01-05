@@ -3,11 +3,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 import { Plus, Clock, CheckCircle2, XCircle, AlertCircle, Loader as LoaderIcon } from "lucide-react";
-import { getLocale } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 // Helper for date formatting
-const formatDate = (dateString: string) => {
-  return new Date(dateString).toLocaleString(undefined, {
+const formatDate = (dateString: string, locale: string) => {
+  return new Date(dateString).toLocaleString(locale, {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
@@ -19,21 +19,22 @@ const formatDate = (dateString: string) => {
 export default async function DashboardPage() {
   const history = (await getOptimizationHistoryAction()) as any[];
   const locale = await getLocale();
+  const t = await getTranslations('EvaluationList');
 
   return (
     <main className="min-h-screen bg-gray-50/50 p-4 lg:p-8">
       <div className="max-w-7xl mx-auto space-y-6">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
-            <h1 className="text-3xl font-bold tracking-tight">Evaluations</h1>
+            <h1 className="text-3xl font-bold tracking-tight">{t('title')}</h1>
             <p className="text-muted-foreground mt-1">
-              View and manage your historical optimization jobs.
+              {t('subtitle')}
             </p>
           </div>
           <Link href="/evaluation/new">
             <Button className="gap-2">
               <Plus className="h-4 w-4" />
-              New Evaluation
+              {t('new_evaluation')}
             </Button>
           </Link>
         </div>
@@ -45,13 +46,13 @@ export default async function DashboardPage() {
                     <Clock className="h-8 w-8 text-primary" />
                 </div>
                 <div className="space-y-2">
-                    <h3 className="text-xl font-semibold">No evaluations yet</h3>
+                    <h3 className="text-xl font-semibold">{t('no_evaluations')}</h3>
                     <p className="text-muted-foreground max-w-sm">
-                        Start your first optimization to see results here.
+                        {t('start_first_optimization')}
                     </p>
                 </div>
                 <Link href="/evaluation/new">
-                    <Button>Create Evaluation</Button>
+                    <Button>{t('create_evaluation')}</Button>
                 </Link>
              </CardContent>
           </Card>
@@ -61,11 +62,11 @@ export default async function DashboardPage() {
               <table className="w-full text-sm text-left">
                 <thead className="bg-gray-50 text-gray-500 font-medium border-b">
                   <tr>
-                    <th className="px-6 py-4">Job ID</th>
-                    <th className="px-6 py-4">Company</th>
-                    <th className="px-6 py-4">Status</th>
-                    <th className="px-6 py-4">Progress</th>
-                    <th className="px-6 py-4">Created At</th>
+                    <th className="px-6 py-4">{t('table.job_id')}</th>
+                    <th className="px-6 py-4">{t('table.company')}</th>
+                    <th className="px-6 py-4">{t('table.status')}</th>
+                    <th className="px-6 py-4">{t('table.progress')}</th>
+                    <th className="px-6 py-4">{t('table.created_at')}</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y">
@@ -86,7 +87,11 @@ export default async function DashboardPage() {
                              {job.status === 'completed' && <CheckCircle2 className="h-3 w-3" />}
                              {job.status === 'failed' && <XCircle className="h-3 w-3" />}
                              {job.status === 'processing' && <LoaderIcon className="h-3 w-3 animate-spin" />}
-                             <span className="capitalize">{job.status}</span>
+                             <span className="capitalize">
+                               {['completed', 'failed', 'processing'].includes(job.status)
+                                 ? t(`status_types.${job.status}`)
+                                 : job.status}
+                             </span>
                          </span>
                       </td>
                       <td className="px-6 py-4">
@@ -103,7 +108,7 @@ export default async function DashboardPage() {
                         </div>
                       </td>
                       <td className="px-6 py-4 text-muted-foreground">
-                        {formatDate(job.created_at)}
+                        {formatDate(job.created_at, locale)}
                       </td>
                     </tr>
                   ))}
