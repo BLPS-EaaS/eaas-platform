@@ -186,5 +186,40 @@
       "three_tier": "三段式",
       "batch": "批次"
     }
+  },
+  "OptimizationResults": {
+    "title": "優化結果",
+    "job_id": "工作 ID",
+    "back_to_evaluations": "返回試算列表",
+    "status": {
+      "completed": "已完成",
+      "failed": "失敗",
+      "processing": "處理中"
+    },
+    "metrics": {
+      "title": "關鍵績效指標",
+      "optimal_cabinets": "最佳機櫃數量",
+      "power_rating": "額定功率",
+      "energy_capacity": "能量容量",
+      "spv_breakeven": "SPV 損益平衡年限",
+      "upfront_cost": "期初成本",
+      "gross_annual_savings": "年總節省金額",
+      "spv_npv": "SPV 淨現值 (NPV)",
+      "spv_irr": "SPV 內部報酬率 (IRR)"
+    },
+    "pending": {
+      "title": "結果處理中",
+      "description": "此優化工作目前正在處理中，或尚無結果可顯示。"
+    },
+    "error": {
+      "title": "找不到工作",
+      "description": "找不到請求的優化工作。"
+    },
+    "charts": {
+        "base_case": "基礎案例：負載與電網",
+        "project_case": "規劃案例 (進階)",
+        "battery_soc": "電池電量 (SoC)",
+        "operating_cost": "營運成本"
+    }
   }
 }

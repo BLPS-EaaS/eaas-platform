@@ -1,6 +1,7 @@
 "use client"
 
 import { useMemo, useState, useEffect, useRef } from "react"
+import { useTranslations } from "next-intl"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { RefreshCcw, MousePointer2, Hand } from "lucide-react"
@@ -19,6 +20,8 @@ type PresetType = '1D' | '7D' | '1M' | '3M' | '6M' | 'YTD' | '1Y';
 type InteractionMode = 'zoom' | 'pan';
 
 export function OptimizationCharts({ results }: VisualizationProps) {
+  const t = useTranslations('OptimizationResults.charts');
+
   const chartData = useMemo(() => {
     if (!results) return []
 
@@ -314,7 +317,7 @@ export function OptimizationCharts({ results }: VisualizationProps) {
 
       <Card>
         <CardHeader>
-            <CardTitle>Base Case: Demand & Grid</CardTitle>
+            <CardTitle>{t('base_case')}</CardTitle>
         </CardHeader>
         <CardContent>
             <BaseCaseChart data={filteredData} showOriginal={showOriginal} {...chartProps} />
@@ -323,7 +326,7 @@ export function OptimizationCharts({ results }: VisualizationProps) {
 
       <Card>
         <CardHeader>
-            <CardTitle>Project Case (Advanced)</CardTitle>
+            <CardTitle>{t('project_case')}</CardTitle>
         </CardHeader>
         <CardContent>
             <ProjectAdvancedChart data={filteredData} {...chartProps} />
@@ -332,7 +335,7 @@ export function OptimizationCharts({ results }: VisualizationProps) {
 
       <Card>
         <CardHeader>
-             <CardTitle>Battery State of Charge</CardTitle>
+             <CardTitle>{t('battery_soc')}</CardTitle>
         </CardHeader>
         <CardContent>
             <BatterySOCChart data={filteredData} {...chartProps} />
@@ -341,7 +344,7 @@ export function OptimizationCharts({ results }: VisualizationProps) {
 
       <Card>
         <CardHeader>
-             <CardTitle>Operating Cost</CardTitle>
+             <CardTitle>{t('operating_cost')}</CardTitle>
         </CardHeader>
         <CardContent>
             <CostChart data={filteredData} {...chartProps} />

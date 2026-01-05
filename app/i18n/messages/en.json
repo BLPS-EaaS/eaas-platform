@@ -186,5 +186,40 @@
       "three_tier": "Three Tier",
       "batch": "Batch"
     }
+  },
+  "OptimizationResults": {
+    "title": "Optimization Results",
+    "job_id": "Job ID",
+    "back_to_evaluations": "Back to Evaluations",
+    "status": {
+      "completed": "Completed",
+      "failed": "Failed",
+      "processing": "Processing"
+    },
+    "metrics": {
+      "title": "Key Performance Metrics",
+      "optimal_cabinets": "Optimal Cabinets",
+      "power_rating": "Power Rating",
+      "energy_capacity": "Energy Capacity",
+      "spv_breakeven": "SPV Breakeven Years",
+      "upfront_cost": "Upfront Cost",
+      "gross_annual_savings": "Gross Annual Savings",
+      "spv_npv": "SPV NPV",
+      "spv_irr": "SPV IRR"
+    },
+    "pending": {
+      "title": "Results Pending",
+      "description": "This optimization job is currently processing or has no results available."
+    },
+    "error": {
+      "title": "Job Not Found",
+      "description": "The requested optimization job could not be found."
+    },
+    "charts": {
+        "base_case": "Base Case: Demand & Grid",
+        "project_case": "Project Case (Advanced)",
+        "battery_soc": "Battery State of Charge",
+        "operating_cost": "Operating Cost"
+    }
   }
 }
