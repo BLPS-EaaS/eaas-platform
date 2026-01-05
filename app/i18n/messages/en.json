@@ -1,4 +1,23 @@
 {
+  "HomePage": {
+    "hero": {
+      "title": "BEYOND LIMITATION POWER SERVICE",
+      "subtitle": "The leading EaaS provider. Empowering energy services for sustainable growth."
+    },
+    "solutions": {
+      "title": "Our Solutions",
+      "frequency_regulation": "Frequency Regulation Service",
+      "edreg": "E-dReg Service",
+      "solar_storage": "Solar + Storage Integration",
+      "re100": "RE100 Solutions"
+    },
+    "contact": {
+      "title": "Contact Us",
+      "address": "6F.-7, No. 120, Qiaohe Rd., Zhonghe Dist., New Taipei City 235028, Taiwan (R.O.C.)",
+      "phone": "+886-2-2727-1475",
+      "email": "blps90661430@blps.com.tw"
+    }
+  },
   "EvaluationForm": {
     "title": "New Optimization Request",
     "submit": "Submit Request",
