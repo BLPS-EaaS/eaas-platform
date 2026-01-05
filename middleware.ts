@@ -4,7 +4,7 @@ import createMiddleware from 'next-intl/middleware';
 import { signToken, verifyToken } from '@/lib/auth/session';
 import { locales, defaultLocale } from '@/app/i18n/config';
 
-const protectedRoutes = ['/dashboard'];
+const protectedRoutes = ['/dashboard', '/evaluation'];
 const publicRoutes = ['/sign-in', '/sign-up', '/login']; // Add other public routes
 
 const intlMiddleware = createMiddleware({

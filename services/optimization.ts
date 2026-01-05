@@ -26,3 +26,33 @@ export async function submitOptimizationToBackend(formData: FormData, userId: nu
     throw error;
   }
 }
+
+export async function getOptimizationHistory(userId: number) {
+  const endpointPath = `${ENDPOINTS.OPTIMIZATION_HISTORY}/${userId}`;
+  try {
+    return await apiClient.get(endpointPath, {
+        baseUrl: process.env.PYTHON_API_BASE_URL || "http://localhost:8000",
+        headers: {
+            "user-id": userId.toString(),
+        }
+    });
+  } catch (error) {
+    console.error("Error in getOptimizationHistory:", error);
+    throw error;
+  }
+}
+
+export async function getOptimizationStatus(jobId: string, userId: number) {
+  const endpointPath = `${ENDPOINTS.OPTIMIZATION_STATUS}/${jobId}/status`;
+  try {
+    return await apiClient.get(endpointPath, {
+        baseUrl: process.env.PYTHON_API_BASE_URL || "http://localhost:8000",
+        headers: {
+            "user-id": userId.toString(),
+        }
+    });
+  } catch (error) {
+    console.error("Error in getOptimizationStatus:", error);
+    throw error;
+  }
+}

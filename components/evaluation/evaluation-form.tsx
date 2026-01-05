@@ -3,10 +3,9 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
 import { optimizationSchema, type OptimizationFormData } from "@/lib/schemas/optimization-schema";
 import { Button } from "@/components/ui/button";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import {
   Form,
   FormControl,
@@ -29,8 +28,11 @@ import { submitOptimizationAction } from "@/app/actions/optimization";
 import { toast } from "sonner";
 import { Loader2, Upload, ChevronDown, ChevronUp } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
+import { useRouter } from "next/navigation";
 
 export function EvaluationForm() {
+  const router = useRouter();
+  const locale = useLocale();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [file, setFile] = useState<File | null>(null);
   const [showAdvanced, setShowAdvanced] = useState(false);
@@ -201,6 +203,7 @@ export function EvaluationForm() {
         toast.success(t('validation.success'));
         console.log("Optimization Result:", response.data);
         setResult(response.data);
+        router.push(`/${locale}/evaluation`);
       } else {
         throw new Error(response?.error || 'Unknown error');
       }

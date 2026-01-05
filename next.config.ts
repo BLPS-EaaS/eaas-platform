@@ -6,7 +6,10 @@ const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 const nextConfig: NextConfig = {
   experimental: {
     ppr: true,
-    clientSegmentCache: true
+    clientSegmentCache: true,
+    serverActions: {
+      bodySizeLimit: '2mb',
+    },
   }
 };
 
