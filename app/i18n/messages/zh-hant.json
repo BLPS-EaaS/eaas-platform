@@ -1,4 +1,23 @@
 {
+  "HomePage": {
+    "hero": {
+      "title": "BEYOND LIMITATION POWER SERVICE",
+      "subtitle": "領先的能源即服務 (EaaS) 供應商。為永續能源解決方案提供實證成果。賦能能源服務，實現永續成長。"
+    },
+    "solutions": {
+      "title": "產品解決方案",
+      "frequency_regulation": "調頻服務",
+      "edreg": "電能移轉複合動態調節備轉服務",
+      "solar_storage": "光儲一體",
+      "re100": "RE100"
+    },
+    "contact": {
+      "title": "聯絡我們",
+      "address": "235028 新北市中和區橋和路120號6樓之7",
+      "phone": "+886-2-2727-1475",
+      "email": "blps90661430@blps.com.tw"
+    }
+  },
   "EvaluationForm": {
     "title": "新增試算申請",
     "submit": "提交申請",

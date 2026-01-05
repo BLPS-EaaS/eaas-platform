@@ -157,7 +157,7 @@ export function OptimizationCharts({ results }: VisualizationProps) {
 
     let left = refAreaLeft
     let right = refAreaRight
-    if (left! > right!) [left, right] = [right, left]
+    if (left && right && left > right) [left, right] = [right, left]
 
     const startIndex = chartData.findIndex(d => d.timestamp === left)
     const endIndex = chartData.findIndex(d => d.timestamp === right)

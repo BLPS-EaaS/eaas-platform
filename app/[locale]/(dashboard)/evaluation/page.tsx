@@ -17,7 +17,7 @@ const formatDate = (dateString: string) => {
 };
 
 export default async function DashboardPage() {
-  const history = await getOptimizationHistoryAction();
+  const history = (await getOptimizationHistoryAction()) as any[];
   const locale = await getLocale();
 
   return (
