@@ -10,6 +10,7 @@ import { updateAccount } from '@/app/[locale]/(login)/actions';
 import { User } from '@/lib/db/schema';
 import useSWR from 'swr';
 import { Suspense } from 'react';
+import { useTranslations } from 'next-intl';
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -30,29 +31,30 @@ function AccountForm({
   nameValue = '',
   emailValue = ''
 }: AccountFormProps) {
+  const t = useTranslations('GeneralSettings');
   return (
     <>
       <div>
         <Label htmlFor="name" className="mb-2">
-          Name
+          {t('name_label')}
         </Label>
         <Input
           id="name"
           name="name"
-          placeholder="Enter your name"
+          placeholder={t('name_placeholder')}
           defaultValue={state.name || nameValue}
           required
         />
       </div>
       <div>
         <Label htmlFor="email" className="mb-2">
-          Email
+          {t('email_label')}
         </Label>
         <Input
           id="email"
           name="email"
           type="email"
-          placeholder="Enter your email"
+          placeholder={t('email_placeholder')}
           defaultValue={emailValue}
           required
         />
@@ -77,16 +79,17 @@ export default function GeneralPage() {
     updateAccount,
     {}
   );
+  const t = useTranslations('GeneralSettings');
 
   return (
     <section className="flex-1 p-4 lg:p-8">
       <h1 className="text-lg lg:text-2xl font-medium text-gray-900 mb-6">
-        General Settings
+        {t('title')}
       </h1>
 
       <Card>
         <CardHeader>
-          <CardTitle>Account Information</CardTitle>
+          <CardTitle>{t('account_info')}</CardTitle>
         </CardHeader>
         <CardContent>
           <form className="space-y-4" action={formAction}>
@@ -107,10 +110,10 @@ export default function GeneralPage() {
               {isPending ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Saving...
+                  {t('saving')}
                 </>
               ) : (
-                'Save Changes'
+                t('save')
               )}
             </Button>
           </form>

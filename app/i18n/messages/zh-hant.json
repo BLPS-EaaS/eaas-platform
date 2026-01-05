@@ -240,5 +240,139 @@
         "battery_soc": "電池電量 (SoC)",
         "operating_cost": "營運成本"
     }
+  },
+  "Login": {
+    "title_signin": "登入您的帳戶",
+    "title_signup": "建立您的帳戶",
+    "email_label": "電子郵件",
+    "password_label": "密碼",
+    "email_placeholder": "輸入您的電子郵件",
+    "password_placeholder_signin": "輸入您的密碼",
+    "password_placeholder_signup": "輸入您的密碼",
+    "signin_button": "登入",
+    "signup_button": "註冊",
+    "loading": "載入中...",
+    "new_to_platform": "剛接觸我們的平台？",
+    "already_have_account": "已經有帳戶了？",
+    "create_account_link": "建立一個帳戶",
+    "signin_link": "登入現有帳戶"
+  },
+  "Navigation": {
+    "dashboard": "儀表板",
+    "evaluation": "試算",
+    "sign_out": "登出",
+    "pricing": "定價",
+    "sign_up": "註冊",
+    "settings": "設定"
+  },
+  "TeamSettings": {
+    "title": "團隊設定",
+    "subscription_title": "團隊訂閱",
+    "current_plan": "目前方案",
+    "free_plan": "免費",
+    "billed_monthly": "按月計費",
+    "trial_period": "試用期",
+    "no_active_subscription": "無有效訂閱",
+    "manage_subscription": "管理訂閱",
+    "members_title": "團隊成員",
+    "no_members": "尚無團隊成員。",
+    "remove": "移除",
+    "removing": "移除中...",
+    "invite_title": "邀請團隊成員",
+    "email_label": "電子郵件",
+    "email_placeholder": "輸入電子郵件",
+    "role_label": "角色",
+    "member": "成員",
+    "owner": "擁有者",
+    "invite_button": "邀請成員",
+    "inviting": "邀請中...",
+    "owner_only": "您必須是團隊擁有者才能邀請新成員。"
+  },
+  "GeneralSettings": {
+    "title": "一般設定",
+    "account_info": "帳戶資訊",
+    "name_label": "名稱",
+    "name_placeholder": "輸入您的名稱",
+    "email_label": "電子郵件",
+    "email_placeholder": "輸入您的電子郵件",
+    "save": "儲存變更",
+    "saving": "儲存中..."
+  },
+  "ActivityLog": {
+    "title": "活動記錄",
+    "recent": "最近活動",
+    "no_activity": "尚無活動",
+    "no_activity_desc": "當您執行登入或更新帳戶等操作時，它們將顯示在這裡。",
+    "from_ip": "來自 IP",
+    "actions": {
+        "SIGN_UP": "您已註冊",
+        "SIGN_IN": "您已登入",
+        "SIGN_OUT": "您已登出",
+        "UPDATE_PASSWORD": "您已更改密碼",
+        "DELETE_ACCOUNT": "您已刪除帳戶",
+        "UPDATE_ACCOUNT": "您已更新帳戶",
+        "CREATE_TEAM": "您已建立新團隊",
+        "REMOVE_TEAM_MEMBER": "您已移除團隊成員",
+        "INVITE_TEAM_MEMBER": "您已邀請團隊成員",
+        "ACCEPT_INVITATION": "您已接受邀請",
+        "UNKNOWN": "發生未知動作"
+    },
+    "time": {
+        "just_now": "剛剛",
+        "minutes_ago": "{count} 分鐘前",
+        "hours_ago": "{count} 小時前",
+        "days_ago": "{count} 天前"
+    }
+  },
+  "SecuritySettings": {
+    "title": "安全性設定",
+    "password_title": "密碼",
+    "current_password": "目前密碼",
+    "new_password": "新密碼",
+    "confirm_new_password": "確認新密碼",
+    "update_password": "更新密碼",
+    "updating": "更新中...",
+    "delete_account_title": "刪除帳戶",
+    "delete_account_desc": "帳戶刪除是不可逆的。請謹慎操作。",
+    "confirm_password": "確認密碼",
+    "delete_account": "刪除帳戶",
+    "deleting": "刪除中..."
+  },
+  "EvaluationList": {
+    "title": "試算列表",
+    "subtitle": "檢視和管理您的歷史優化工作。",
+    "new_evaluation": "新試算",
+    "no_evaluations": "尚無試算",
+    "start_first_optimization": "開始您的第一次優化以在此處查看結果。",
+    "create_evaluation": "建立試算",
+    "table": {
+        "job_id": "工作 ID",
+        "company": "公司",
+        "status": "狀態",
+        "progress": "進度",
+        "created_at": "建立時間"
+    },
+    "status_types": {
+        "completed": "已完成",
+        "failed": "失敗",
+        "processing": "處理中"
+    }
+  },
+  "Pricing": {
+    "title": "定價",
+    "disabled_message": "訂閱目前已停用。請聯繫我們以獲取存取權限。",
+    "per_user": "每位使用者",
+    "interval_month": "月",
+    "trial_days": "包含 {trialDays} 天免費試用",
+    "get_started": "開始使用",
+    "loading": "載入中...",
+    "features": {
+        "unlimited_usage": "無限使用",
+        "unlimited_members": "無限工作區成員",
+        "email_support": "電子郵件支援",
+        "everything_base": "包含基礎版所有功能，以及：",
+        "early_access": "搶先體驗新功能",
+        "support_slack": "24/7 支援 + Slack 存取"
+    }
   }
 }
