@@ -31,7 +31,7 @@ export function OptimizationResultClient({ jobId, locale, initialData }: Optimiz
         }
     );
 
-    const { status, results } = result || {};
+    const { status, company_name, results } = result || {};
     
     // Extract metrics for the highlight table
     const metrics = results ? {
@@ -58,7 +58,7 @@ export function OptimizationResultClient({ jobId, locale, initialData }: Optimiz
               </Link>
               <div>
                 <div className="flex items-center gap-3">
-                  <h1 className="text-2xl font-bold tracking-tight">{t('title')}</h1>
+                  <h1 className="text-2xl font-bold tracking-tight">{company_name} {t('title')}:</h1>
                    <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium border ${
                        status === 'completed' ? 'bg-green-50 text-green-700 border-green-200' :
                        status === 'failed' ? 'bg-red-50 text-red-700 border-red-200' :

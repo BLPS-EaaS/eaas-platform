@@ -1,4 +1,4 @@
-import { CartesianGrid, Line, LineChart, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, Area, ReferenceArea } from "recharts"
+import { CartesianGrid, Line, ComposedChart, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, Area, ReferenceArea } from "recharts"
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 import { format } from "date-fns"
 
@@ -27,15 +27,15 @@ const chartConfig = {
   },
   gridToLoad: {
     label: "Grid → Load",
-    color: "var(--chart-2)", // Green-ish usually
+    color: "#90EE90", // lightgreen
   },
   gridToBattery: {
     label: "Grid → Battery",
-    color: "var(--chart-5)", // Blue-ish
+    color: "#1E90FF", // dodgerblue
   },
   batteryToLoad: {
     label: "Battery → Load",
-    color: "var(--chart-4)", // Orange-ish
+    color: "#FFA500", // orange
   },
 } satisfies ChartConfig
 
@@ -51,7 +51,7 @@ export function ProjectAdvancedChart({
   return (
     <div className="w-full h-[400px]" style={style}>
       <ChartContainer config={chartConfig} className="h-full w-full">
-        <LineChart 
+        <ComposedChart 
           data={data} 
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
           onMouseDown={onMouseDown}
@@ -108,12 +108,10 @@ export function ProjectAdvancedChart({
             isAnimationActive={false}
           />
 
-          {/* Stacked Areas for Flows */}
-          
+          {/* Flow Areas */}
           <Area
             type="monotone"
             dataKey="grid_to_load"
-            stackId="1"
             fill={chartConfig.gridToLoad.color}
             stroke={chartConfig.gridToLoad.color}
             fillOpacity={0.6}
@@ -123,7 +121,6 @@ export function ProjectAdvancedChart({
            <Area
             type="monotone"
             dataKey="grid_to_battery"
-            stackId="1" 
             fill={chartConfig.gridToBattery.color}
             stroke={chartConfig.gridToBattery.color}
             fillOpacity={0.6}
@@ -133,7 +130,6 @@ export function ProjectAdvancedChart({
            <Area
             type="monotone"
             dataKey="battery_to_load"
-            stackId="1"
             fill={chartConfig.batteryToLoad.color}
             stroke={chartConfig.batteryToLoad.color}
             fillOpacity={0.6}
@@ -141,7 +137,7 @@ export function ProjectAdvancedChart({
             isAnimationActive={false}
           />
 
-        </LineChart>
+        </ComposedChart>
       </ChartContainer>
     </div>
   )
