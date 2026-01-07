@@ -42,7 +42,6 @@ export async function getOptimizationHistory(userId: number) {
   }
 }
 
-// Reverted cache
 export async function getOptimizationStatus(jobId: string, userId: number) {
   const endpointPath = `${ENDPOINTS.OPTIMIZATION_STATUS}/${jobId}/status`;
   try {
