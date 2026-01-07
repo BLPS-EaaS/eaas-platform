@@ -1,6 +1,8 @@
-import { CartesianGrid, Line, LineChart, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, ReferenceArea } from "recharts"
+import { Area, CartesianGrid, ComposedChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, ReferenceArea } from "recharts"
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 import { format } from "date-fns"
+
+import { useMemo } from "react"
 
 interface CostChartProps {
   data: any[]
@@ -32,11 +34,19 @@ export function CostChart({
   onMouseUp,
   style
  }: CostChartProps) {
+  const processedData = useMemo(() => {
+    return data.map((item) => ({
+      ...item,
+      area_increase: [item.cost_base, Math.max(item.cost_base, item.cost_proj)],
+      area_decrease: [Math.min(item.cost_base, item.cost_proj), item.cost_base],
+    }))
+  }, [data])
+
   return (
     <div className="w-full h-[250px]" style={style}>
       <ChartContainer config={chartConfig} className="h-full w-full">
-        <LineChart 
-          data={data} 
+        <ComposedChart 
+          data={processedData} 
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
           onMouseDown={onMouseDown}
           onMouseMove={onMouseMove}
@@ -52,6 +62,25 @@ export function CostChart({
           <YAxis />
           <ChartTooltip content={<ChartTooltipContent labelFormatter={(value) => format(new Date(value), "PP pp")} />} />
           <Legend />
+
+          <Area
+            type="monotone"
+            dataKey="area_increase"
+            stroke="none"
+            name="Extra Cost"
+            fill={chartConfig.costBase.color}
+            fillOpacity={0.2}
+            isAnimationActive={false}
+          />
+          <Area
+            type="monotone"
+            dataKey="area_decrease"
+            stroke="none"
+            name="Cost Savings"
+            fill={chartConfig.costProj.color}
+            fillOpacity={0.2}
+            isAnimationActive={false}
+          />
 
           {refAreaLeft && refAreaRight && (
             <ReferenceArea x1={refAreaLeft} x2={refAreaRight} strokeOpacity={0.3} fill="hsl(var(--foreground))" fillOpacity={0.05} />
@@ -75,7 +104,7 @@ export function CostChart({
             name="Cost (With Battery)"
             isAnimationActive={false}
           />
-        </LineChart>
+        </ComposedChart>
       </ChartContainer>
     </div>
   )
