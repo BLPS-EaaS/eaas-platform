@@ -239,6 +239,11 @@
         "project_case": "規劃案例 (進階)",
         "battery_soc": "電池電量 (SoC)",
         "operating_cost": "營運成本"
+    },
+    "optimal": "最佳推薦",
+    "cabinet_comparison": {
+        "title": "機櫃優化比較",
+        "cabinets": "機櫃數量"
     }
   },
   "Login": {

@@ -239,6 +239,11 @@
         "project_case": "Project Case (Advanced)",
         "battery_soc": "Battery State of Charge",
         "operating_cost": "Operating Cost"
+    },
+    "optimal": "Optimal",
+    "cabinet_comparison": {
+        "title": "Cabinet Comparison",
+        "cabinets": "Cabinets"
     }
   },
   "Login": {

@@ -8,6 +8,7 @@ import { useTranslations, useFormatter } from "next-intl";
 import { OptimizationCharts } from "@/components/evaluation/optimization-charts";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { CabinetComparison } from "@/components/evaluation/cabinet-comparison";
 
 interface OptimizationResultClientProps {
   jobId: string;
@@ -131,6 +132,8 @@ export function OptimizationResultClient({ jobId, locale, initialData }: Optimiz
                        </div>
                   </CardContent>
               </Card>
+
+              <CabinetComparison results={results} />
   
               <OptimizationCharts results={results} />
           </>
