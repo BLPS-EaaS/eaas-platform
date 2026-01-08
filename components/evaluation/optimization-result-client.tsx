@@ -9,6 +9,7 @@ import { OptimizationCharts } from "@/components/evaluation/optimization-charts"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CabinetComparison } from "@/components/evaluation/cabinet-comparison";
+import { ConfigurationSummary } from "@/components/evaluation/configuration-summary";
 
 interface OptimizationResultClientProps {
   jobId: string;
@@ -32,6 +33,7 @@ export function OptimizationResultClient({ jobId, locale, initialData }: Optimiz
         }
     );
 
+    const { request_settings } = result || null;
     const { status, company_name, results } = result || {};
     
     // Extract metrics for the highlight table
@@ -134,6 +136,8 @@ export function OptimizationResultClient({ jobId, locale, initialData }: Optimiz
               </Card>
 
               <CabinetComparison results={results} />
+
+              <ConfigurationSummary settings={request_settings} locale={locale} />
   
               <OptimizationCharts results={results} />
           </>

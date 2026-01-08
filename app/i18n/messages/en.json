@@ -142,11 +142,11 @@
             "title": "Schedule DR",
             "monthly_select_8_day": {
                 "title": "Monthly Select 8 Day",
-                "pledge_kw_ratio": "Pledge kW Ratio"
+                "pledge_kw": "Pledge kW"
             },
             "daily_select_time_block": {
                 "title": "Daily Select Time Block",
-                "pledge_kw_ratio": "Pledge kW Ratio",
+                "pledge_kw": "Pledge kW",
                 "options": {
                     "2h": "2 Hours",
                     "4h": "4 Hours",
@@ -158,7 +158,7 @@
             "title": "Real Time DR",
             "guaranteed_response_type": {
                 "title": "Guaranteed Response",
-                "pledge_kw_ratio": "Pledge kW Ratio",
+                "pledge_kw": "Pledge kW",
                 "event_daily_probability": "Daily Probability",
                 "event_duration_hours": "Duration (Hours)",
                 "peak_month_multiplier": "Peak Month Multiplier",
@@ -166,7 +166,7 @@
             },
             "flexible_response_type": {
                 "title": "Flexible Response",
-                "pledge_kw_ratio": "Pledge kW Ratio",
+                "pledge_kw": "Pledge kW",
                 "event_daily_probability": "Daily Probability",
                 "event_duration_hours": "Duration (Hours)",
                 "peak_month_multiplier": "Peak Month Multiplier"
@@ -176,7 +176,7 @@
             "title": "Demand Bidding",
             "economic_type": {
                 "title": "Economic Type",
-                 "pledge_kw_ratio": "Pledge kW Ratio",
+                 "pledge_kw": "Pledge kW",
                 "bid_probability": "Bid Probability",
                 "event_duration_hours": "Duration (Hours)",
                 "bid_price": "Bid Price",
@@ -184,7 +184,7 @@
             },
             "reliable_type": {
                 "title": "Reliable Type",
-                "pledge_kw_ratio": "Pledge kW Ratio",
+                "pledge_kw": "Pledge kW",
                 "bid_probability": "Bid Probability",
                 "event_duration_hours": "Duration (Hours)",
                 "bid_price": "Bid Price"
@@ -244,6 +244,12 @@
     "cabinet_comparison": {
         "title": "Cabinet Comparison",
         "cabinets": "Cabinets"
+    },
+    "ConfigurationSummary": {
+        "title": "Configuration Summary",
+        "base_case_config": "Base Case Configuration",
+        "project_case_config": "Project Case Configuration",
+        "financial_config": "Financial & Battery Configuration"
     }
   },
   "Login": {

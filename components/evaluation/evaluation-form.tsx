@@ -130,9 +130,9 @@ export function EvaluationForm() {
       adr: {
         activate_all: false,
         schedule_dr: {
-            monthly_select_8_day: { is_active: false, pledge_kw_ratio: 0.25 },
+            monthly_select_8_day: { is_active: false, pledge_kw: 0 },
             daily_select_time_block: {
-                pledge_kw_ratio: 0.90,
+                pledge_kw: 0,
                 options: {
                     "2h": { is_active: false },
                     "4h": { is_active: false },
@@ -143,7 +143,7 @@ export function EvaluationForm() {
         real_time_dr: {
             guaranteed_response_type: {
                 is_active: false,
-                pledge_kw_ratio: 0.25,
+                pledge_kw: 0,
                 event_daily_probability: 0.005,
                 event_duration_hours: 3,
                 peak_month_multiplier: 2.0,
@@ -151,7 +151,7 @@ export function EvaluationForm() {
             },
             flexible_response_type: {
                 is_active: false,
-                pledge_kw_ratio: 0.25,
+                pledge_kw: 0,
                 event_daily_probability: 0.005,
                 event_duration_hours: 4,
                 peak_month_multiplier: 2,
@@ -160,7 +160,7 @@ export function EvaluationForm() {
         demand_bidding: {
             economic_type: {
                 is_active: false,
-                pledge_kw_ratio: 0.25,
+                pledge_kw: 0,
                 bid_probability: 0.005,
                 event_duration_hours: 2,
                 bid_price: 10,
@@ -168,7 +168,7 @@ export function EvaluationForm() {
             },
             reliable_type: {
                  is_active: false,
-                 pledge_kw_ratio: 0.25,
+                 pledge_kw: 0,
                  bid_probability: 0.005,
                  event_duration_hours: 2,
                  bid_price: 10,
@@ -750,8 +750,8 @@ export function EvaluationForm() {
                                         </FormItem>
                                     )}
                                 />
-                                <FormField control={form.control} name="adr.schedule_dr.monthly_select_8_day.pledge_kw_ratio" render={({ field }) => (
-                                    <FormItem className="ml-8"><FormLabel>{t('sections.adr.schedule_dr.monthly_select_8_day.pledge_kw_ratio')}</FormLabel><FormControl><PercentageInput {...field} className="max-w-[150px]" /></FormControl><FormMessage /></FormItem>
+                                <FormField control={form.control} name="adr.schedule_dr.monthly_select_8_day.pledge_kw" render={({ field }) => (
+                                    <FormItem className="ml-8"><FormLabel>{t('sections.adr.schedule_dr.monthly_select_8_day.pledge_kw')}</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseInt(e.target.value))} className="max-w-[150px]" /></FormControl><FormMessage /></FormItem>
                                 )} />
                              </div>
 
@@ -759,8 +759,8 @@ export function EvaluationForm() {
                              <div className="space-y-4 ml-4 mt-4">
                                <h5 className="text-sm font-medium">{t('sections.adr.schedule_dr.daily_select_time_block.title')}</h5>
                                 <div className="grid gap-4 ml-4">
-                                    <FormField control={form.control} name="adr.schedule_dr.daily_select_time_block.pledge_kw_ratio" render={({ field }) => (
-                                        <FormItem><FormLabel>{t('sections.adr.schedule_dr.daily_select_time_block.pledge_kw_ratio')}</FormLabel><FormControl><PercentageInput {...field} className="max-w-[150px]" /></FormControl><FormMessage /></FormItem>
+                                    <FormField control={form.control} name="adr.schedule_dr.daily_select_time_block.pledge_kw" render={({ field }) => (
+                                        <FormItem><FormLabel>{t('sections.adr.schedule_dr.daily_select_time_block.pledge_kw')}</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseInt(e.target.value))} className="max-w-[150px]" /></FormControl><FormMessage /></FormItem>
                                     )} />
                                     <div className="flex gap-4">
                                         {['2h', '4h', '6h'].map((opt) => (
@@ -802,8 +802,8 @@ export function EvaluationForm() {
                                     )}
                                 />
                                 <div className="grid gap-4 sm:grid-cols-2 ml-8">
-                                     <FormField control={form.control} name="adr.real_time_dr.guaranteed_response_type.pledge_kw_ratio" render={({ field }) => (
-                                        <FormItem><FormLabel>{t('sections.adr.real_time_dr.guaranteed_response_type.pledge_kw_ratio')}</FormLabel><FormControl><PercentageInput {...field} /></FormControl><FormMessage /></FormItem>
+                                     <FormField control={form.control} name="adr.real_time_dr.guaranteed_response_type.pledge_kw" render={({ field }) => (
+                                        <FormItem><FormLabel>{t('sections.adr.real_time_dr.guaranteed_response_type.pledge_kw')}</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseInt(e.target.value))} className="max-w-[150px]" /></FormControl><FormMessage /></FormItem>
                                     )} />
                                      <FormField control={form.control} name="adr.real_time_dr.guaranteed_response_type.event_daily_probability" render={({ field }) => (
                                         <FormItem><FormLabel>{t('sections.adr.real_time_dr.guaranteed_response_type.event_daily_probability')}</FormLabel><FormControl><PercentageInput {...field} /></FormControl><FormMessage /></FormItem>
@@ -854,8 +854,8 @@ export function EvaluationForm() {
                                     )}
                                 />
                                  <div className="grid gap-4 sm:grid-cols-2 ml-8">
-                                     <FormField control={form.control} name="adr.real_time_dr.flexible_response_type.pledge_kw_ratio" render={({ field }) => (
-                                        <FormItem><FormLabel>{t('sections.adr.real_time_dr.flexible_response_type.pledge_kw_ratio')}</FormLabel><FormControl><PercentageInput {...field} /></FormControl><FormMessage /></FormItem>
+                                     <FormField control={form.control} name="adr.real_time_dr.flexible_response_type.pledge_kw" render={({ field }) => (
+                                        <FormItem><FormLabel>{t('sections.adr.real_time_dr.flexible_response_type.pledge_kw')}</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseInt(e.target.value))} className="max-w-[150px]" /></FormControl><FormMessage /></FormItem>
                                     )} />
                                      <FormField control={form.control} name="adr.real_time_dr.flexible_response_type.event_daily_probability" render={({ field }) => (
                                         <FormItem><FormLabel>{t('sections.adr.real_time_dr.flexible_response_type.event_daily_probability')}</FormLabel><FormControl><PercentageInput {...field} /></FormControl><FormMessage /></FormItem>
@@ -888,18 +888,18 @@ export function EvaluationForm() {
                                         </FormItem>
                                     )}
                                 />
-                                <div className="grid gap-4 sm:grid-cols-2 ml-8">
-                                     <FormField control={form.control} name="adr.demand_bidding.economic_type.pledge_kw_ratio" render={({ field }) => (
-                                        <FormItem><FormLabel>{t('sections.adr.demand_bidding.economic_type.pledge_kw_ratio')}</FormLabel><FormControl><PercentageInput {...field} /></FormControl><FormMessage /></FormItem>
+                                 <div className="grid gap-4 sm:grid-cols-2 ml-8">
+                                     <FormField control={form.control} name="adr.demand_bidding.economic_type.pledge_kw" render={({ field }) => (
+                                        <FormItem><FormLabel>{t('sections.adr.demand_bidding.economic_type.pledge_kw')}</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseInt(e.target.value))} className="max-w-[150px]" /></FormControl><FormMessage /></FormItem>
                                     )} />
-                                    <FormField control={form.control} name="adr.demand_bidding.economic_type.bid_probability" render={({ field }) => (
+                                     <FormField control={form.control} name="adr.demand_bidding.economic_type.bid_price" render={({ field }) => (
+                                        <FormItem><FormLabel>{t('sections.adr.demand_bidding.economic_type.bid_price')}</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
+                                    )} />
+                                     <FormField control={form.control} name="adr.demand_bidding.economic_type.bid_probability" render={({ field }) => (
                                         <FormItem><FormLabel>{t('sections.adr.demand_bidding.economic_type.bid_probability')}</FormLabel><FormControl><PercentageInput {...field} /></FormControl><FormMessage /></FormItem>
                                     )} />
-                                    <FormField control={form.control} name="adr.demand_bidding.economic_type.event_duration_hours" render={({ field }) => (
+                                     <FormField control={form.control} name="adr.demand_bidding.economic_type.event_duration_hours" render={({ field }) => (
                                         <FormItem><FormLabel>{t('sections.adr.demand_bidding.economic_type.event_duration_hours')}</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseInt(e.target.value))} /></FormControl><FormMessage /></FormItem>
-                                    )} />
-                                    <FormField control={form.control} name="adr.demand_bidding.economic_type.bid_price" render={({ field }) => (
-                                        <FormItem><FormLabel>{t('sections.adr.demand_bidding.economic_type.bid_price')}</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} /></FormControl><FormMessage /></FormItem>
                                     )} />
                                      <FormField
                                         control={form.control}
@@ -910,20 +910,20 @@ export function EvaluationForm() {
                                             <Select onValueChange={field.onChange} defaultValue={field.value}>
                                                 <FormControl>
                                                 <SelectTrigger>
-                                                    <SelectValue placeholder="Select" />
+                                                    <SelectValue placeholder="Select type" />
                                                 </SelectTrigger>
                                                 </FormControl>
                                                 <SelectContent>
                                                 <SelectItem value="day_ahead">Day Ahead</SelectItem>
-                                                <SelectItem value="2h_before">2h Before</SelectItem>
+                                                <SelectItem value="2h_before">2 Hours Before</SelectItem>
                                                 </SelectContent>
                                             </Select>
                                             <FormMessage />
                                             </FormItem>
                                         )}
                                         />
-                                </div>
-                            </div>
+                                 </div>
+                             </div>
                              {/* Reliable Type */}
                              <div className="space-y-4 ml-4 mt-6">
                                 <FormField
@@ -938,9 +938,9 @@ export function EvaluationForm() {
                                         </FormItem>
                                     )}
                                 />
-                                <div className="grid gap-4 sm:grid-cols-2 ml-8">
-                                     <FormField control={form.control} name="adr.demand_bidding.reliable_type.pledge_kw_ratio" render={({ field }) => (
-                                        <FormItem><FormLabel>{t('sections.adr.demand_bidding.reliable_type.pledge_kw_ratio')}</FormLabel><FormControl><PercentageInput {...field} /></FormControl><FormMessage /></FormItem>
+                                 <div className="grid gap-4 sm:grid-cols-2 ml-8">
+                                     <FormField control={form.control} name="adr.demand_bidding.reliable_type.pledge_kw" render={({ field }) => (
+                                        <FormItem><FormLabel>{t('sections.adr.demand_bidding.reliable_type.pledge_kw')}</FormLabel><FormControl><Input type="number" {...field} onChange={e => field.onChange(parseInt(e.target.value))} className="max-w-[150px]" /></FormControl><FormMessage /></FormItem>
                                     )} />
                                     <FormField control={form.control} name="adr.demand_bidding.reliable_type.bid_probability" render={({ field }) => (
                                         <FormItem><FormLabel>{t('sections.adr.demand_bidding.reliable_type.bid_probability')}</FormLabel><FormControl><PercentageInput {...field} /></FormControl><FormMessage /></FormItem>

@@ -95,10 +95,10 @@ export const optimizationSchema = z.object({
     schedule_dr: z.object({
       monthly_select_8_day: z.object({
         is_active: z.boolean(),
-        pledge_kw_ratio: z.number().min(0).max(1),
+        pledge_kw: z.number().int().min(0),
       }),
       daily_select_time_block: z.object({
-        pledge_kw_ratio: z.number().min(0).max(1),
+        pledge_kw: z.number().int().min(0),
         options: z.object({
           "2h": z.object({ is_active: z.boolean() }),
           "4h": z.object({ is_active: z.boolean() }),
@@ -109,7 +109,7 @@ export const optimizationSchema = z.object({
     real_time_dr: z.object({
       guaranteed_response_type: z.object({
         is_active: z.boolean(),
-        pledge_kw_ratio: z.number().min(0).max(1),
+        pledge_kw: z.number().int().min(0),
         event_daily_probability: z.number().min(0).max(1),
         event_duration_hours: z.number(),
         peak_month_multiplier: z.number().min(0).max(2),
@@ -117,7 +117,7 @@ export const optimizationSchema = z.object({
       }),
       flexible_response_type: z.object({
         is_active: z.boolean(),
-        pledge_kw_ratio: z.number().min(0).max(1),
+        pledge_kw: z.number().int().min(0),
         event_daily_probability: z.number().min(0).max(1),
         event_duration_hours: z.number(),
         peak_month_multiplier: z.number().min(0).max(2)
@@ -126,7 +126,7 @@ export const optimizationSchema = z.object({
     demand_bidding: z.object({
       economic_type: z.object({
         is_active: z.boolean(),
-        pledge_kw_ratio: z.number().min(0).max(1),
+        pledge_kw: z.number().int().min(0),
         bid_probability: z.number().min(0).max(1),
         event_duration_hours: z.number(),
         bid_price: z.number(),
@@ -134,7 +134,7 @@ export const optimizationSchema = z.object({
       }),
       reliable_type: z.object({
         is_active: z.boolean(),
-        pledge_kw_ratio: z.number().min(0).max(1),
+        pledge_kw: z.number().int().min(0),
         bid_probability: z.number().min(0).max(1),
         event_duration_hours: z.union([z.literal(2), z.literal(4)]),
         bid_price: z.number()

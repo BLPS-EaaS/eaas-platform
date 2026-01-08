@@ -142,11 +142,11 @@
             "title": "計畫性",
             "monthly_select_8_day": {
                 "title": "月選8日型",
-                "pledge_kw_ratio": "抑低契約比例"
+                "pledge_kw": "抑低契約量 (kW)"
             },
             "daily_select_time_block": {
                 "title": "日選時段型",
-                "pledge_kw_ratio": "抑低契約比例",
+                "pledge_kw": "抑低契約量 (kW)",
                 "options": {
                     "2h": "2 小時",
                     "4h": "4 小時",
@@ -158,7 +158,7 @@
             "title": "即時型",
             "guaranteed_response_type": {
                 "title": "保證反應型",
-                "pledge_kw_ratio": "抑低契約比例",
+                "pledge_kw": "抑低契約量 (kW)",
                 "event_daily_probability": "每日發生機率",
                 "event_duration_hours": "持續時間 (小時)",
                 "peak_month_multiplier": "尖峰月份加成",
@@ -166,7 +166,7 @@
             },
             "flexible_response_type": {
                 "title": "彈性反應型",
-                "pledge_kw_ratio": "抑低契約比例",
+                "pledge_kw": "抑低契約量 (kW)",
                 "event_daily_probability": "每日發生機率",
                 "event_duration_hours": "持續時間 (小時)",
                 "peak_month_multiplier": "尖峰月份加成"
@@ -176,7 +176,7 @@
             "title": "需量競價",
             "economic_type": {
                 "title": "經濟型",
-                 "pledge_kw_ratio": "抑低契約比例",
+                 "pledge_kw": "抑低契約量 (kW)",
                 "bid_probability": "得標機率",
                 "event_duration_hours": "持續時間 (小時)",
                 "bid_price": "報價金額",
@@ -184,7 +184,7 @@
             },
             "reliable_type": {
                 "title": "可靠型",
-                "pledge_kw_ratio": "抑低契約比例",
+                "pledge_kw": "抑低契約量 (kW)",
                 "bid_probability": "得標機率",
                 "event_duration_hours": "持續時間 (小時)",
                 "bid_price": "報價金額"
@@ -244,6 +244,12 @@
     "cabinet_comparison": {
         "title": "機櫃優化比較",
         "cabinets": "機櫃數量"
+    },
+    "ConfigurationSummary": {
+        "title": "配置摘要",
+        "base_case_config": "基礎案例配置",
+        "project_case_config": "專案案例配置",
+        "financial_config": "財務與電池配置"
     }
   },
   "Login": {
