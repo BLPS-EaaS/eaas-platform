@@ -234,6 +234,25 @@
       "title": "找不到工作",
       "description": "找不到請求的優化工作。"
     },
+    "ADRResults": {
+        "title": "需量反應結果",
+        "no_revenue": "無收益",
+        "scenario": "情境",
+        "view_events": "查看事件",
+        "no_events": "本月無觸發事件。",
+        "adr_names": {
+          "Monthly Select 8 Day": "月選8日型",
+          "Daily Select Time Block 2 Hours": "日選時段型 (2 小時)",
+          "Daily Select Time Block 4 Hours": "日選時段型 (4 小時)",
+          "Daily Select Time Block 6 Hours": "日選時段型 (6 小時)",
+          "Guaranteed Response": "保證反應型",
+          "Flexible Response": "彈性反應",
+          "Economic (Demand Bidding)": "經濟型 (需量競價)",
+          "Reliable (Demand Bidding)": "可靠型 (需量競價)",
+          "Obligated Hours": "義務時數型",
+          "Progressive Incentive": "累進回饋型"
+        }
+    },
     "charts": {
         "base_case": "基礎案例：負載與電網",
         "project_case": "規劃案例 (進階)",

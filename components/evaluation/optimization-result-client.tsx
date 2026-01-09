@@ -10,6 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CabinetComparison } from "@/components/evaluation/cabinet-comparison";
 import { ConfigurationSummary } from "@/components/evaluation/configuration-summary";
+import { ADRResultCard } from "@/components/evaluation/adr-result-card";
 
 interface OptimizationResultClientProps {
   jobId: string;
@@ -137,6 +138,9 @@ export function OptimizationResultClient({ jobId, locale, initialData }: Optimiz
 
               <CabinetComparison results={results} />
 
+
+              <ADRResultCard adrData={results.selected_adr_scenarios} />
+              
               <ConfigurationSummary settings={request_settings} locale={locale} />
   
               <OptimizationCharts results={results} />

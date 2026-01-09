@@ -234,6 +234,25 @@
       "title": "Job Not Found",
       "description": "The requested optimization job could not be found."
     },
+    "ADRResults": {
+        "title": "ADR Results",
+        "no_revenue": "No Revenue",
+        "scenario": "Scenario",
+        "view_events": "View Events",
+        "no_events": "No events triggered for this month.",
+        "adr_names": {
+          "Monthly Select 8 Day": "Monthly Select 8 Day",
+          "Daily Select Time Block 2 Hours": "Daily Select Time Block 2 Hours",
+          "Daily Select Time Block 4 Hours": "Daily Select Time Block 4 Hours",
+          "Daily Select Time Block 6 Hours": "Daily Select Time Block 6 Hours",
+          "Guaranteed Response": "Guaranteed Response",
+          "Flexible Response": "Flexible Response",
+          "Economic (Demand Bidding)": "Economic (Demand Bidding)",
+          "Reliable (Demand Bidding)": "Reliable (Demand Bidding)",
+          "Obligated Hours": "Obligated Hours",
+          "Progressive Incentive": "Progressive Incentive"
+        }
+    },
     "charts": {
         "base_case": "Base Case: Demand & Grid",
         "project_case": "Project Case (Advanced)",
