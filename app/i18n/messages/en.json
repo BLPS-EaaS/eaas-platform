@@ -241,6 +241,7 @@
         "view_events": "View Events",
         "no_events": "No events triggered for this month.",
         "adr_names": {
+          "No ADR": "No ADR",
           "Monthly Select 8 Day": "Monthly Select 8 Day",
           "Daily Select Time Block 2 Hours": "Daily Select Time Block 2 Hours",
           "Daily Select Time Block 4 Hours": "Daily Select Time Block 4 Hours",

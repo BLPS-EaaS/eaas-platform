@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo, useState, useEffect, useRef } from "react"
 import useSWR from "swr";
 import Link from "next/link";
 import { ArrowLeft, Loader2, CheckCircle2, XCircle, Clock } from "lucide-react";
@@ -22,6 +23,8 @@ interface OptimizationResultClientProps {
 export function OptimizationResultClient({ jobId, locale, initialData }: OptimizationResultClientProps) {
     const t = useTranslations('OptimizationResults');
     const format = useFormatter();
+    const chartsRef = useRef<HTMLDivElement>(null);
+    const [targetDateRange, setTargetDateRange] = useState<{ start: Date; end: Date } | null>(null);
 
     const { data: result } = useSWR(
         `optimization-result-${jobId}`, 
@@ -140,11 +143,34 @@ export function OptimizationResultClient({ jobId, locale, initialData }: Optimiz
               <CabinetComparison results={results} />
 
 
-              <ADRResultCard adrData={results.selected_adr_scenarios} />
+              <ADRResultCard 
+                adrData={results.selected_adr_scenarios}
+                onDateClick={(date) => {
+                  const targetDate = new Date(date);
+                  // Set range: date - 2 days to date + 2 days
+                  // Assuming date string is "YYYY-MM-DD" or similar ISO date
+                  
+                  // Helper to safely parse and manipulate date
+                  if (!isNaN(targetDate.getTime())) {
+                      const startDate = new Date(targetDate);
+                      startDate.setDate(targetDate.getDate() - 2);
+                      
+                      const endDate = new Date(targetDate);
+                      endDate.setDate(targetDate.getDate() + 2);
+
+                      setTargetDateRange({ start: startDate, end: endDate });
+                      
+                      // Scroll to charts
+                      chartsRef.current?.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }} 
+              />
               
               <ConfigurationSummary settings={request_settings} locale={locale} />
   
-              <OptimizationCharts results={results} />
+              <div ref={chartsRef} className="scroll-mt-20">
+                <OptimizationCharts results={results} targetDateRange={targetDateRange} />
+              </div>
           </>
           ) : (
                <Card className="border-dashed">

@@ -241,6 +241,7 @@
         "view_events": "查看事件",
         "no_events": "本月無觸發事件。",
         "adr_names": {
+          "No ADR": "無 ADR",
           "Monthly Select 8 Day": "月選8日型",
           "Daily Select Time Block 2 Hours": "日選時段型 (2 小時)",
           "Daily Select Time Block 4 Hours": "日選時段型 (4 小時)",

@@ -26,9 +26,10 @@ interface ADRMonthData {
 interface ADRResultCardProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   adrData?: Record<string, ADRMonthData> | null;
+  onDateClick?: (date: string) => void;
 }
 
-export function ADRResultCard({ adrData }: ADRResultCardProps) {
+export function ADRResultCard({ adrData, onDateClick }: ADRResultCardProps) {
   const t = useTranslations('OptimizationResults.ADRResults');
   const format = useFormatter();
   const locale = useLocale();
@@ -95,7 +96,11 @@ export function ADRResultCard({ adrData }: ADRResultCardProps) {
                                                 </div>
                                                 <div className="space-y-2">
                                                     {Object.entries(event.info).sort().map(([date, info]) => (
-                                                        <div key={date} className="text-sm bg-muted/50 p-2 rounded flex flex-col gap-1">
+                                                        <div 
+                                                            key={date} 
+                                                            className={`text-sm bg-muted/50 p-2 rounded flex flex-col gap-1 transition-colors ${onDateClick ? 'cursor-pointer hover:bg-muted hover:ring-1 hover:ring-primary/20' : ''}`}
+                                                            onClick={() => onDateClick?.(date)}
+                                                        >
                                                             <div className="font-medium flex justify-between">
                                                                 <span>{date}</span>
                                                                 <div className="flex items-center gap-1 text-xs text-muted-foreground">

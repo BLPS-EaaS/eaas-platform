@@ -13,13 +13,14 @@ import { format, subMonths, startOfYear, subYears, subDays, addMinutes } from "d
 import { Toggle } from "@/components/ui/toggle"
 
 interface VisualizationProps {
-  results: any
+  results: any;
+  targetDateRange?: { start: Date; end: Date } | null;
 }
 
 type PresetType = '1D' | '7D' | '1M' | '3M' | '6M' | 'YTD' | '1Y';
 type InteractionMode = 'zoom' | 'pan';
 
-export function OptimizationCharts({ results }: VisualizationProps) {
+export function OptimizationCharts({ results, targetDateRange }: VisualizationProps) {
   const t = useTranslations('OptimizationResults.charts');
 
   const chartData = useMemo(() => {
@@ -155,6 +156,47 @@ export function OptimizationCharts({ results }: VisualizationProps) {
           setHasInitialized(true);
       }
   }, [hasInitialized, chartData]);
+
+  // Handle external zoom requests (e.g. from ADR date click)
+  useEffect(() => {
+    if (targetDateRange && chartData.length > 0) {
+        const startIndex = chartData.findIndex(d => new Date(d.timestamp) >= targetDateRange.start);
+        
+        // Find end index - ensuring we cover the range. 
+        // findIndex finds the FIRST element > end. So we want that index or last index.
+        let endIndex = chartData.findIndex(d => new Date(d.timestamp) > targetDateRange.end);
+        
+        if (startIndex === -1) {
+            // Start date is after all data? Or before all data?
+            // If start date is way past data, nothing to show.
+            // If start date is way before, start at 0.
+            if (targetDateRange.start < new Date(chartData[0].timestamp)) {
+                 // Start at 0
+            }
+        }
+
+        // Refined logic:
+        const firstTimestamp = new Date(chartData[0].timestamp);
+        const lastTimestamp = new Date(chartData[chartData.length - 1].timestamp);
+
+        // If target range is completely out of bounds
+        if (targetDateRange.end < firstTimestamp || targetDateRange.start > lastTimestamp) {
+            return; 
+        }
+
+        const effectiveStartIndex = startIndex >= 0 ? startIndex : 0;
+        const effectiveEndIndex = endIndex >= 0 ? endIndex : chartData.length - 1;
+        
+        // If findIndex returned -1 for end, it means all dates are <= end (so take last index)
+        const finalEndIndex = endIndex === -1 ? chartData.length - 1 : endIndex;
+
+        setZoomRange({
+            startIndex: effectiveStartIndex,
+            endIndex: finalEndIndex
+        });
+        setActivePreset(null);
+    }
+  }, [targetDateRange, chartData]);
 
   // Click-and-Drag Handlers
   const zoom = () => {
