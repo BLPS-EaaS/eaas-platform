@@ -35,7 +35,8 @@ export function OptimizationResultClient({ jobId, locale, initialData }: Optimiz
     );
 
     const { request_settings } = result || null;
-    const { status, company_name, results } = result || {};
+    const { status, company_name, optimized_results } = result || {};
+    const results = optimized_results;
     
     // Extract metrics for the highlight table
     const metrics = results ? {

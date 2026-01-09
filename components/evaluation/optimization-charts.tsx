@@ -9,7 +9,7 @@ import { BaseCaseChart } from "./charts/base-case-chart"
 import { ProjectAdvancedChart } from "./charts/project-advanced-chart"
 import { BatterySOCChart } from "./charts/battery-soc-chart"
 import { CostChart } from "./charts/cost-chart"
-import { format, subMonths, startOfYear, subYears, subDays } from "date-fns"
+import { format, subMonths, startOfYear, subYears, subDays, addMinutes } from "date-fns"
 import { Toggle } from "@/components/ui/toggle"
 
 interface VisualizationProps {
@@ -30,61 +30,75 @@ export function OptimizationCharts({ results }: VisualizationProps) {
     const maxSoc = Math.max(...socValues, 0);
     const socNeedsScaling = maxSoc <= 1.0 && maxSoc > 0;
     
-    const timestamps = Object.keys(results.load_kw).sort();
-
-    return timestamps.map((timestamp) => {
-        // Basic retrievals
-        const load_kw = results.load_kw[timestamp] || 0;
-        const grid_base = results.grid_base[timestamp] || 0;
-        const grid_proj = results.grid_proj[timestamp] || 0;
-        const base_cap = results.base_cap[timestamp] || 0;
-        const proj_cap = results.proj_cap[timestamp] || 0;
-        const battery_dispatch = results.battery_dispatch[timestamp] || 0; // +ve discharge, -ve charge
+    // List-based data logic
+    const { metadata } = results;
+    
+    // If metadata exists, we proceed with list-based logic
+    if (metadata && metadata.start && metadata.interval_min) {
         
-        let soc_percent = results.soc_percent[timestamp] || 0;
-        if (socNeedsScaling) {
-            soc_percent *= 100;
-        }
-
-        // Original Base (if exists)
-        const original_load_kw = results.original_base?.load_kw?.[timestamp] || null;
-        const original_grid_series = results.original_base?.grid_series?.[timestamp] || null;
-
-        // Tariffs
-        const base_tariff_rate = results.base_tariff_rate?.[timestamp] || 0;
-        const proj_tariff_rate = results.proj_tariff_rate?.[timestamp] || 0;
-
-        // Derived calculations (matching Python script)
-        const battery_discharge = Math.max(0, battery_dispatch);
-        const battery_charge = Math.max(0, -battery_dispatch); // Charge is positive flow INTO battery
+        // Helper to generate timestamps
+        const startTime = new Date(metadata.start);
+        const interval = metadata.interval_min;
+        const totalPoints = results.load_kw?.length || 0;
         
-        // Advanced flows
-        const grid_to_battery = battery_charge; 
-        const grid_to_load = grid_proj - grid_to_battery;
-        const battery_to_load = battery_discharge;
+        return Array.from({ length: totalPoints }).map((_, i) => {
+            const currentTimestamp = addMinutes(startTime, i * interval).toISOString();
+            
+            // Basic retrievals by index
+            const load_kw = results.load_kw?.[i] ?? 0;
+            const grid_base = results.grid_base?.[i] ?? 0;
+            const grid_proj = results.grid_proj?.[i] ?? 0;
+            const base_cap = results.base_cap?.[i] ?? 0;
+            const proj_cap = results.proj_cap?.[i] ?? 0;
+            const battery_dispatch = results.battery_dispatch?.[i] ?? 0;
+            
+            let soc_percent = results.soc_percent?.[i] ?? 0;
+            if (socNeedsScaling) {
+                soc_percent *= 100;
+            }
 
-        // Costs
-        const cost_base = grid_base * base_tariff_rate;
-        const cost_proj = grid_proj * proj_tariff_rate;
+            // Original Base (if exists) -> use index 
+            const original_load_kw = results.original_base?.load_kw?.[i] ?? null;
+            const original_grid_series = results.original_base?.grid_series?.[i] ?? null;
 
-        return {
-            timestamp,
-            load_kw,
-            grid_base,
-            grid_proj,
-            base_cap,
-            proj_cap,
-            battery_dispatch,
-            soc_percent,
-            original_load_kw,
-            original_grid_series,
-            grid_to_battery,
-            grid_to_load,
-            battery_to_load,
-            cost_base,
-            cost_proj
-        }
-    })
+            // Tariffs
+            const base_tariff_rate = results.base_tariff_rate?.[i] ?? 0;
+            const proj_tariff_rate = results.proj_tariff_rate?.[i] ?? 0;
+
+            // Derived calculations
+            const battery_discharge = Math.max(0, battery_dispatch);
+            const battery_charge = Math.max(0, -battery_dispatch);
+            
+            const grid_to_battery = battery_charge; 
+            const grid_to_load = grid_proj - grid_to_battery;
+            const battery_to_load = battery_discharge;
+
+            const cost_base = grid_base * base_tariff_rate;
+            const cost_proj = grid_proj * proj_tariff_rate;
+
+            return {
+                timestamp: currentTimestamp,
+                load_kw,
+                grid_base,
+                grid_proj,
+                base_cap,
+                proj_cap,
+                battery_dispatch,
+                soc_percent,
+                original_load_kw,
+                original_grid_series,
+                grid_to_battery,
+                grid_to_load,
+                battery_to_load,
+                cost_base,
+                cost_proj
+            }
+        });
+
+    } else {
+        console.warn("Missing metadata for timestamp generation, returning empty chart data");
+        return []; 
+    }
   }, [results])
 
   // State
